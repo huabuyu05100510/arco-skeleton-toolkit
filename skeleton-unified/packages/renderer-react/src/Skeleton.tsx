@@ -25,9 +25,19 @@
  */
 
 import React, {
-  useRef, useState, useEffect, useMemo, useId,
+  useRef, useState, useEffect, useMemo,
   type ReactNode, type CSSProperties,
 } from 'react'
+
+// React 17 兼容：useId 是 React 18 新增，这里用 ref + 计数器模拟
+let _uidCounter = 0
+function useId(): string {
+  const ref = useRef<string>('')
+  if (!ref.current) {
+    ref.current = `:r${(_uidCounter++).toString(36)}:`
+  }
+  return ref.current
+}
 import type {
   SkeletonData, ResponsiveSkeletonData, AnimationStyle, Bone,
 } from '@skeleton/core'

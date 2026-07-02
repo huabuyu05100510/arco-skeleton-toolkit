@@ -57,6 +57,7 @@ const getContentSource = (name) => {
 
 setupMock({
   setup: () => {
+    Mock.setup({ timeout: '800-1500' });
     Mock.mock(new RegExp('/api/multi-dimension/overview'), () => {
       const { array: overviewData } = Mock.mock({
         'array|4': [

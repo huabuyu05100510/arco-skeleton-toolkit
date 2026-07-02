@@ -425,7 +425,7 @@ export function injectIntoComponent(opts: {
 
   // Pattern A: return (\n   <Xxx>
   // 找到 `return (` 行，在该行后面找第一个以 < 开头（可能有空格缩进）的行
-  const patternA = /^(\s+)(return\s*\(\s*)$/m
+  const patternA = /^([ \t]+)(return\s*\(\s*)$/m
   const matchA = patternA.exec(content)
 
   if (matchA) {
